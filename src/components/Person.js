@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import DeleteIcon from './delete.svg'
+import React from 'react'
+import DeleteIcon from '../images/delete.svg'
 
 function Person ({ person, onDelete }) {
   console.log(person)

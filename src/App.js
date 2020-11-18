@@ -1,16 +1,12 @@
 import React from 'react'
-import './App.css'
-import Home from './Home'
-import DeleteIcon from './delete.svg'
-import font from './Marons-Regular.ttf'
+import './css/App.css'
 // Icons
-import ListImg from './listwhite.svg'
-import BudgetImg from './Budget.svg'
-import PersonImg from './man-user (1).svg'
+import ListImg from './images/listwhite.svg'
+import BudgetImg from './images/Budget.svg'
+import PersonImg from './images/man-user (1).svg'
 // Components
-import Budget from './Budget'
-import Person from './Persons'
-import List from './list'
+import Budget from './components/Budget'
+import Person from './components/Persons'
 
 import {
   BrowserRouter as Router,
@@ -38,7 +34,7 @@ function App (props) {
             <Person />  {/* Component */}
           </Route>
           <Route path='/'>
-            <List />  {/* Component */}
+            <p>Empty</p>  {/* Component */}
           </Route>
         </Switch>
       </div>

@@ -1,14 +1,9 @@
 import React, { useState } from 'react'
-import './App.css'
-import { getPeople, addPerson, flushDB, removePerson } from './db'
-import addImage from './add (1).svg'
-import PersonComp from './PersonComp'
-import Home from './Home'
-import DeleteIcon from './delete.svg'
-import List from './listwhite.svg'
-import Budget from './Budget.svg'
+import { getPeople, addPerson, flushDB, removePerson } from '../lib/db'
+import addImage from '../images/add (1).svg'
+import DeleteIcon from '../images/delete.svg'
 // import manImage from './man-user (1).svg'
-import Person from './Person'
+import Person from '../components/Person'
 
 // Formulera en datastruktur som liknar den som är i countries som vi haft i labben.
 
@@ -21,7 +16,7 @@ function Persons ({ showPresent = false }) {
     setPeople([...getPeople()])
   }
 
-  const PeopleElements = people.map(person => <Person person={person} onDelete={deletePerson} />)
+  const PeopleElements = people.map(person => <Person person={person} key={person.id} onDelete={deletePerson} />)
   //  const PeopleElements = people.map(person => <div className='PersonElement'><p key={person.id}>{person.name}</p><img src={DeleteIcon} alt='DeleteIco' onClick={removePerson(person.id)} onClick={setPeople([...getPeople()])} /> </div>)
 
   // Listan flyttas om man lägger till massa personer

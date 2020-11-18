@@ -1,0 +1,126 @@
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.addImg{
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes drawBar {
+  0%{
+  transform: scaleX(0);
+  }
+  100%{
+    transform: scaleX(100%);
+  }
+}
+
+@keyframes fadein {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+.bottomButtons {
+  display: flex;
+  flex-direction: row;
+ justify-content: space-around;
+ padding: 1%;
+ 
+}
+
+.bottomButton {
+height: 200%;
+padding: 10%;
+}
+
+.mainContent {
+  flex: 1;
+  overflow: scroll;
+}
+
+
+@font-face {
+  font-family: 'Marons';
+  src: local('Marons'), url(./Marons-Regular.ttf) format('truetype');
+}
+
+.Name{
+  color: white;
+
+  font-family: Marons;   /*Must Stay!!!*/
+  -webkit-animation-name: fadein;
+  animation-name: fadein;
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  transform-origin: 0 0;
+  margin: 0;
+  text-align: center;
+  font-size: 38px;
+}
+
+.footer{
+  width: 100vw;
+  background-color: #7F0000;
+  height:80px;
+}
+
+.Header{
+  width:100vw;
+  background-color: #7F0000;
+  margin: 0;
+  padding-top:15px;
+  padding-bottom:15px;
+}
+
+.h1 {
+  left:0;
+}
+
+.animatedBar {
+-webkit-animation-name: drawBar;
+animation-name: drawBar;
+-webkit-animation-duration: .5s;
+animation-duration: .5s;
+transform-origin: 0 0;
+}
+
+
+
+.Budgett{
+ border-radius: 10px;
+ align-items: center;
+ position: absolute;
+ 
+ 
+}
+

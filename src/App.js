@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './css/App.css'
 // Icons
 import ListImg from './images/listwhite.svg'
@@ -7,6 +7,8 @@ import PersonImg from './images/man-user (1).svg'
 // Components
 import Budget from './components/Budget'
 import Person from './components/Persons'
+import List from './components/List'
+import InputPopup from './components/InputPopup'
 
 import {
   BrowserRouter as Router,
@@ -16,7 +18,14 @@ import {
 } from 'react-router-dom'
 
 function App (props) {
+  const [budgetPopupVisible, setBudgetPopupVisible] = useState(false)
   // CODE HERE
+
+  const applyBudget = (string) => {
+    setBudgetPopupVisible(false)
+    console.log(string)
+    // TODO calculate stuff
+  }
 
   return (
     <Router>
@@ -34,16 +43,19 @@ function App (props) {
             <Person />  {/* Component */}
           </Route>
           <Route path='/'>
-            <p>Empty</p>  {/* Component */}
+            <List />  {/* Component */}
           </Route>
         </Switch>
       </div>
 
+      {/* <Budget visible={budgetPopup} onClose={() => setBudgetPopup(false)} /> */}
+
+      <InputPopup onClose={() => setBudgetPopupVisible(false)} onDone={applyBudget} visible={budgetPopupVisible} numerical><p>Skriv in total budget</p></InputPopup>
       <div className='footer'>
 
         <div className='bottomButtons'>
           <Link to='/'><img height={30} src={ListImg} alt='Lista' className='bottomButton' /></Link>
-          <Link to='/Budget'><img height={30} src={BudgetImg} alt='Budget' className='bottomButton' /></Link>
+          <div onClick={() => setBudgetPopupVisible(true)}><img height={30} src={BudgetImg} alt='Budget' className='bottomButton' /></div>
           <Link to='/Persons'><img height={30} src={PersonImg} alt='Ändra Person' className='bottomButton' /></Link>
         </div>
 

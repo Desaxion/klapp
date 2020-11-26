@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Popup from 'react-animated-popup'
+import Button from './Button'
 // import PopUp from './PopUp';
 
 function handleInput (event) {
@@ -6,14 +8,40 @@ function handleInput (event) {
   /* setText(event.target.value) */
 }
 
-function Budget () {
+// class Budget extends React.Component {
+//   render () {
+//     return (
+//       <header>
+//         <form id='to-do-form'>
+//           <input type='text' placeholder='Skriv budget...' />
+//           <button type='submit'>BEKRÄFTA</button> <button type='submit'>AVBRYT</button>
+//         </form>
+
+//       </header>
+
+//     )
+//   }
+// }
+function handleOK (event) {
+  event.preventDefault()
+}
+function handleNotOK (event) {
+  event.preventDefault()
+}
+function Budget ({ visible, onClose }) {
   return (
-    <div className='Budgett'>
-      <header>
-        <input type='text' placeholder='Skriv Budget' onChange={handleInput} />
-        <button type='submit'> BEKRÄFTA </button>
-      </header>
+    <div className='popupContainer'>
+      <Popup className='BudgetPopup' visible={visible} onClose={onClose}>
+        <form id='budget-list'>
+          <div className='Budgett'>
+            <input type='text' placeholder='Skriv Total Budget...' onChange={handleInput} />
+            <Button type='submit' onSubmit={handleOK} style={{ backgroundColor: 'green' }}> BEKRÄFTA </Button>
+            <Button type='submit' onSubmit={handleNotOK}> AVBRYT </Button>
+          </div>
+        </form>
+      </Popup>
     </div>
   )
 }
+
 export default Budget

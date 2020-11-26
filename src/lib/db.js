@@ -11,6 +11,7 @@ import { v4 as uuidv4 } from 'uuid'
 //            {
 //            name: 'myPresent'
 //            cost: 9999
+// desc
 //            presentid =
 //          }
 //        ]
@@ -32,15 +33,10 @@ function loadStorage () {
     saveStorage(retrevedData)
   }
 
-  console.log('this is the data:')
-  console.log(retrevedData)
-
   return retrevedData
 }
 
 export function getPeople () {
-  console.log(loadStorage())
-  console.log(loadStorage().people)
   return loadStorage().people
 }
 
@@ -60,14 +56,13 @@ export function flushDB () {
   window.localStorage.setItem('storage', null)
 }
 
-export function addPresent (id, presentName, presentCost, presentDesc) {
+export function addPresent (presentName, presentCost, presentDesc) {
   const newPresent = {
     name: presentName,
     cost: presentCost,
-    desc: presentDesc
+    desc: presentDesc,
+    id: uuidv4()
   }
-
-  // Ingen är på tur nu så ni kan få hjälp om ni vill med github eller dylikt
 
   // let igenom eran databas efter ert id
   // lägg till present
@@ -75,7 +70,7 @@ export function addPresent (id, presentName, presentCost, presentDesc) {
 
 export function removePerson (id) {
   // använd filter!
-  console.log(loadStorage().people)
+
   // modifiera db filen
   // spara!
   const newDb = loadStorage()

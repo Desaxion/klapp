@@ -2,13 +2,16 @@ import React, { useState } from 'react'
 import { getPeople, addPerson, flushDB, removePerson } from '../lib/db'
 import addImage from '../images/add (1).svg'
 import DeleteIcon from '../images/delete.svg'
-// import manImage from './man-user (1).svg'
 import Person from '../components/Person'
+import InputPopup from '../components/InputPopup'
+// import Popup from 'react-animated-popup'
 
 // Formulera en datastruktur som liknar den som är i countries som vi haft i labben.
 
+// Show present false? När är den true?
 function Persons ({ showPresent = false }) {
   const [people, setPeople] = useState(getPeople())
+  const [popupIsOpen, setPopupIsOpen] = useState(false)
   console.log(people)
 
   const deletePerson = (id) => {
@@ -21,9 +24,14 @@ function Persons ({ showPresent = false }) {
 
   // Listan flyttas om man lägger till massa personer
 
-  const add = () => {
-    // get user input!
-    addPerson('Gunnar')
+  // const add = () => {
+  //   setPopupIsOpen(true)  // setPeople([...getPeople()])
+  // }
+
+  const handleAddPerson = (name) => {
+    setPopupIsOpen(false)
+    console.log(name)
+    addPerson(name)
     setPeople([...getPeople()])
   }
 
@@ -36,8 +44,8 @@ function Persons ({ showPresent = false }) {
   return (
     <div>
       {PeopleElements}
-
-      <img src={addImage} alt='add' onClick={add} className='addImg' />
+      <InputPopup visible={popupIsOpen} onClose={() => setPopupIsOpen(false)} onDone={handleAddPerson} />
+      <img src={addImage} alt='add' onClick={() => setPopupIsOpen(true)} className='addImg' />
       <button onClick={deleteAll}> <img height={30} src={DeleteIcon} alt='delete' /></button>
     </div>
   )

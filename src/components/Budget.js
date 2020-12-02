@@ -31,7 +31,7 @@ function handleNotOK (event) {
 function Budget ({ visible, onClose }) {
   return (
     <div className='popupContainer'>
-      <Popup className='BudgetPopup' visible={visible} onClose={onClose}>
+      <Popup key='Budgetpop' className='BudgetPopup' visible={visible} onClose={onClose}>
         <form id='budget-list'>
           <div className='Budgett'>
             <input type='text' placeholder='Skriv Total Budget...' onChange={handleInput} />

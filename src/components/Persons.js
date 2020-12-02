@@ -44,8 +44,8 @@ function Persons ({ showPresent = false }) {
   return (
     <div>
       {PeopleElements}
-      <InputPopup visible={popupIsOpen} onClose={() => setPopupIsOpen(false)} onDone={handleAddPerson} />
-      <img src={addImage} alt='add' onClick={() => setPopupIsOpen(true)} className='addImg' />
+      <InputPopup key='personPopup' visible={popupIsOpen} onClose={() => setPopupIsOpen(false)} onDone={handleAddPerson} children={<p className='aText'>Lägg till en person</p>} />
+      <div className='center'><img src={addImage} alt='add' onClick={() => setPopupIsOpen(true)} className='addImg' /></div>
       <button onClick={deleteAll}> <img height={30} src={DeleteIcon} alt='delete' /></button>
     </div>
   )

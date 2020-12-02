@@ -17,6 +17,8 @@ import {
   Link
 } from 'react-router-dom'
 
+const iconHeight = 50
+
 function App (props) {
   const [budgetPopupVisible, setBudgetPopupVisible] = useState(false)
   // CODE HERE
@@ -31,7 +33,9 @@ function App (props) {
     <Router>
 
       <div className='Header'>
-        <h1 className='Name'>Klapp</h1>
+        <div className='topHeader'>
+          <h1 className='Name'>Klapp</h1>
+        </div>
       </div>
 
       <div className='mainContent'>
@@ -43,20 +47,21 @@ function App (props) {
             <Person />  {/* Component */}
           </Route>
           <Route path='/'>
-            <List />  {/* Component */}
+            <List /> {/* Component */}
           </Route>
         </Switch>
       </div>
 
       {/* <Budget visible={budgetPopup} onClose={() => setBudgetPopup(false)} /> */}
+      <div className='BudgetButton'>
+        <InputPopup key='budgetPopup' onClose={() => setBudgetPopupVisible(false)} onDone={applyBudget} visible={budgetPopupVisible} numerical><p> Skriv in total budget</p></InputPopup>
+      </div>
 
-      <InputPopup onClose={() => setBudgetPopupVisible(false)} onDone={applyBudget} visible={budgetPopupVisible} numerical><p>Skriv in total budget</p></InputPopup>
       <div className='footer'>
-
         <div className='bottomButtons'>
-          <Link to='/'><img height={30} src={ListImg} alt='Lista' className='bottomButton' /></Link>
-          <div onClick={() => setBudgetPopupVisible(true)}><img height={30} src={BudgetImg} alt='Budget' className='bottomButton' /></div>
-          <Link to='/Persons'><img height={30} src={PersonImg} alt='Ändra Person' className='bottomButton' /></Link>
+          <Link to='/'><img height={iconHeight} src={ListImg} alt='Lista' className='bottomButton' /> </Link>
+          <div onClick={() => setBudgetPopupVisible(true)}><img height={iconHeight} src={BudgetImg} alt='Budget' className='bottomButton' /> </div>
+          <Link to='/Persons'><img height={iconHeight} src={PersonImg} alt='Ändra Person' className='bottomButton' /></Link>
         </div>
 
       </div>

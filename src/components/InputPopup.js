@@ -4,8 +4,9 @@ import Button from './Button'
 import stringIsNumeric from 'string-is-numeric'
 import Spacer from './Spacer'
 
-function InputPopup ({ children, visible, onClose, onDone, numerical = false }) {
-  const [string, setString] = useState('')
+function InputPopup ({ fieldString, children, visible, onClose, onDone, numerical = false }) {
+  console.log(fieldString)
+  const [string, setString] = useState(fieldString)
 
   const handleInputChange = (e) => {
     if (numerical) { // vill de ha numeriskt?

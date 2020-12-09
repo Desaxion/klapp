@@ -15,17 +15,68 @@
   overflow: hidden;
 }
 
+.Presents {
+    transition: 200ms;
+}
+
+.AddPresent {
+  border-radius: 25px;
+}
+
+.Entry{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+
+.EntryHeader {
+  border-color: rgb(0, 0, 0);
+  border-style: ridge;
+  background: rgb(252, 249, 209);
+  border-radius: 25px;
+  height: 50px;
+  margin-top: 4px;
+  width: 100vw;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .PersonEntry{
-  border-color: gray;
-  border: 4px;
-  background: rgb(107,107,107);
-  background: linear-gradient(0deg, rgba(107,107,107,1) 0%, rgba(177,177,177,1) 100%);
+  border-color: rgb(0, 0, 0);
+  border-style: ridge;
+  background: rgb(252, 249, 209);
+  border-radius: 25px;
+  height: 50px;
+  margin-top: 4px;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
 
 }
 .center{
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.CheckIcon{
+  height: 30px;
+}
+
+.PresentAmount{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Sack {
+  height: 30px;
 }
 
 .center img{
@@ -84,7 +135,7 @@
   cursor: pointer;
   justify-content: center;
   align-items: center;
-} 
+}
 
 .mainContent {
   flex: 1;
@@ -95,11 +146,25 @@
 @font-face {
   font-family: 'Marons';
   src: local('Marons'), url(./Marons-Regular.ttf) format('truetype');
+  font-family: 'Roboto';
+  src: local('Roboto-Regular'), url(./Roboto-Regular.ttf) format('truetype');
+  font-family: 'RBold';
+  src: local('Roboto-Bold'), url(./Roboto-Bold.ttf) format('truetype');
+  font-family: 'Circular';
+  src: local('CircularStd-Bold'), url(./CircularStd-Bold.otf) format('opentype');
+}
+
+h2 {
+  font-family: Roboto;
+
+}
+
+.appTextBold {
+  font-family: Roboto-Bold;
 }
 
 .Name{
   color: white;
-
   font-family: Marons;   /*Must Stay!!!*/
   -webkit-animation-name: fadein;
   animation-name: fadein;
@@ -109,6 +174,13 @@
   margin: 0;
   text-align: center;
   font-size: 38px;
+}
+
+.EntryElements {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
 }
 
 .footer{
@@ -173,12 +245,12 @@ transform-origin: 0 0;
 /* Lägg till person*/
 .aText{
   font-size: large;
-  
+
 }
 
 /* Budget text*/
 .BudgetButton{
   cursor: pointer;
   font-size: large;
-  
+
 }

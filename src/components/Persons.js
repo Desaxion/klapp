@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { getPeople, addPerson, flushDB, removePerson } from '../lib/db'
+import { getPeople, addPerson, flushDB, removePerson, getTotalCost } from '../lib/db'
 import addImage from '../images/add (1).svg'
 import DeleteIcon from '../images/delete.svg'
 import Person from '../components/Person'
@@ -10,18 +10,20 @@ import YesNoPopup from './YesNoPopup'
 // Formulera en datastruktur som liknar den som är i countries som vi haft i labben.
 
 // Show present false? När är den true?
-function Persons ({ showPresent = false }) {
+function Persons ({ onCostChange }) {
   const [people, setPeople] = useState(getPeople())
   const [popupIsOpen, setPopupIsOpen] = useState(false)
   const [editPopupIsOpen, setEditPopupIsOpen] = useState(false)
-  const [currentPerson, setCurrentPerson] = useState('')
+  const [currentPerson, setCurrentPerson] = useState()
   const [deletePersonVisible, setDeletePersonVisible] = useState(false)
+
   // asynkron?
   const deletePerson = () => {
     removePerson(currentPerson.id)
     setCurrentPerson()
     setPeople([...getPeople()])
     setDeletePersonVisible(false)
+    onCostChange(getTotalCost())
   }
 
   const handleDeleteClick = (person) => {
@@ -31,11 +33,10 @@ function Persons ({ showPresent = false }) {
 
   const handleEditRequest = (person) => {
     setCurrentPerson(person)
-    console.log(currentPerson)
     setEditPopupIsOpen(true)
   }
 
-  const PeopleElements = people.map(person => <Person person={person} key={person.id} onDelete={handleDeleteClick} onEdit={handleEditRequest} />)
+  var PeopleElements = people.map(person => <Person person={person} key={person.id} onDelete={handleDeleteClick} onEdit={handleEditRequest} />)
 
   const editPerson = (inputName) => {
     currentPerson.name = inputName
@@ -44,7 +45,6 @@ function Persons ({ showPresent = false }) {
 
   const handleAddPerson = (name) => {
     setPopupIsOpen(false)
-    console.log(name)
     addPerson(name)
     setPeople([...getPeople()])
   }
@@ -57,7 +57,9 @@ function Persons ({ showPresent = false }) {
 
   return (
     <div>
-      {PeopleElements}
+      <div className='EntryElements'>
+        <h2>{PeopleElements}</h2>
+      </div>
       <YesNoPopup keyValue='DeleteThePersonPopup' visible={deletePersonVisible} onYes={deletePerson} onClose={() => setDeletePersonVisible(false)}>Vill du verkligen ta bort {currentPerson && currentPerson.name}? </YesNoPopup>
 
       <InputPopup key='personPopup' visible={popupIsOpen} onClose={() => setPopupIsOpen(false)} onDone={handleAddPerson} children={<p className='aText'>Lägg till en person</p>} />
@@ -67,14 +69,13 @@ function Persons ({ showPresent = false }) {
         visible={editPopupIsOpen}
         onClose={() => setEditPopupIsOpen(false)}
         onDone={editPerson}
-        {...console.log(currentPerson)}
         // Fieldstring funkar inte
-        fieldString={currentPerson}
+        initialState={currentPerson && currentPerson.name}
         children={<p className='aText'>Ändra {currentPerson && currentPerson.name} </p>}
       />
 
       <div className='center'><img src={addImage} alt='add' onClick={() => setPopupIsOpen(true)} className='addImg' /></div>
-      <button onClick={deleteAll}> <img height={30} src={DeleteIcon} alt='delete' /></button>
+      {/* <button onClick={deleteAll}> <img height={30} src={DeleteIcon} alt='delete' /></button> */}
     </div>
   )
 }

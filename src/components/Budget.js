@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Popup from 'react-animated-popup'
 import Button from './Button'
+import InputPopup from './InputPresPop'
 // import PopUp from './PopUp';
 
 function handleInput (event) {
@@ -35,12 +36,14 @@ function Budget ({ visible, onClose }) {
         <form id='budget-list'>
           <div className='Budgett'>
             <input type='text' placeholder='Skriv Total Budget...' onChange={handleInput} />
-            <Button type='submit' onSubmit={handleOK} style={{ backgroundColor: 'green' }}> BEKRÄFTA </Button>
+            <Button type='submit' onDone={handleOK} style={{ backgroundColor: 'green' }}> BEKRÄFTA </Button>
             <Button type='submit' onSubmit={handleNotOK}> AVBRYT </Button>
           </div>
         </form>
       </Popup>
     </div>
+
+
   )
 }
 

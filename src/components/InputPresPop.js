@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import Popup from 'react-animated-popup'
 import Button from './Button'
 import stringIsNumeric from 'string-is-numeric'
@@ -11,17 +11,22 @@ width: 100%;
 height: 150px;
 `
 
-function InputPopup ({ keyValue, visible, onClose, onDone, numerical = false }) {
-  console.log(keyValue)
-  const [name, setName] = useState('')
-  const [cost, setCost] = useState('')
-  const [desc, setDesc] = useState('')
+function InputPopup ({ iniName, iniCost, iniDesc, keyValue, visible, onClose, onDone, numerical = false }) {
+  const [name, setName] = useState(iniName)
+  const [cost, setCost] = useState(iniCost)
+  const [desc, setDesc] = useState(iniDesc)
 
   const handleInputChange = (e) => {
     if (stringIsNumeric(e.target.value)) { // är det numeriskt?
       setCost(e.target.value)
     }
   }
+
+  useMemo(() => {
+    setName(iniName)
+    setCost(iniCost)
+    setDesc(iniDesc)
+  }, [iniName, iniCost, iniDesc])
 
   const handleDone = () => {
     onDone({ name: name, cost: cost, desc: desc })

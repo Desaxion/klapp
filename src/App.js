@@ -9,26 +9,35 @@ import Budget from './components/Budget'
 import Person from './components/Persons'
 import List from './components/List'
 import InputPopup from './components/InputPopup'
-
+import BudgetElement from './components/BudgetElement'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from 'react-router-dom'
+import { setBudget, getBudget } from './lib/db'
 
 const iconHeight = 50
 
 function App (props) {
   const [budgetPopupVisible, setBudgetPopupVisible] = useState(false)
+  const [currentBudget, setCurrentBudget] = useState(getBudget())
+  const [cost, setCost] = useState()
+
   // CODE HERE
+  // Uppdateras ej med en gång, asynkron?
+  const handleCostChange = (cost) => {
+    console.log(cost)
+    setCost(cost)
+  }
 
   const applyBudget = (string) => {
     setBudgetPopupVisible(false)
-    console.log(string)
+    setBudget(parseInt(string))
+    setCurrentBudget(getBudget())
     // TODO calculate stuff
   }
-
   return (
     <Router>
 
@@ -37,26 +46,25 @@ function App (props) {
           <h1 className='Name'>Klapp</h1>
         </div>
       </div>
-
+      <BudgetElement chosenBudget={currentBudget} cost={cost} />
       <div className='mainContent'>
         <Switch>
           <Route path='/Budget'>
             <Budget /> {/* Component */}
           </Route>
           <Route path='/Persons'>
-            <Person />  {/* Component */}
+            <Person onCostChange={handleCostChange} />  {/* Component */}
           </Route>
           <Route path='/'>
-            <List /> {/* Component */}
+            <List onCostChange={handleCostChange} /> {/* Component */}
           </Route>
         </Switch>
       </div>
 
       {/* <Budget visible={budgetPopup} onClose={() => setBudgetPopup(false)} /> */}
       <div className='BudgetButton'>
-        <InputPopup key='budgetPopup' onClose={() => setBudgetPopupVisible(false)} onDone={applyBudget} visible={budgetPopupVisible} numerical><p> Skriv in total budget</p></InputPopup>
+        <InputPopup key='budgetPopuppp' onClose={() => setBudgetPopupVisible(false)} onDone={applyBudget} visible={budgetPopupVisible} numerical><p> Skriv in total budget</p></InputPopup>
       </div>
-
       <div className='footer'>
         <div className='bottomButtons'>
           <Link to='/'><img height={iconHeight} src={ListImg} alt='Lista' className='bottomButton' /> </Link>

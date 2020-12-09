@@ -1,6 +1,5 @@
 // Detta är databasen :)
 import { v4 as uuidv4 } from 'uuid'
-import Persons from '../components/Persons'
 
 // let db = null
 // let db = {
@@ -30,10 +29,20 @@ function loadStorage () {
 
   if (!retrevedData) {
     // Initiate data structure
-    retrevedData = { people: [] }
+    retrevedData = { people: [], budget: 0 }
     saveStorage(retrevedData)
   }
   return retrevedData
+}
+
+export function getBudget () {
+  return loadStorage().budget
+}
+
+export function setBudget (input) {
+  const tempStorage = loadStorage()
+  tempStorage.budget = input
+  saveStorage(tempStorage)
 }
 
 export function getPeople () {
@@ -42,8 +51,22 @@ export function getPeople () {
 
 export function getPresents (id) {
   const targetedPerson = loadStorage().people.filter(person => person.id === id)[0]
-  console.log(targetedPerson)
   return targetedPerson.presents
+}
+
+export function checkPresent (checked, id) {
+  const tempStorage = loadStorage()
+  tempStorage.people = tempStorage.people.map(person => {
+    person.presents = person.presents.map(present => {
+      if (present.id === id) {
+        present.checked = checked
+        console.log('updated')
+      }
+      return present
+    })
+    return person
+  })
+  saveStorage(tempStorage)
 }
 
 export function addPerson (personName) {
@@ -67,6 +90,7 @@ export function addPresent (presentName, presentCost, presentDesc, personid) {
     name: presentName,
     cost: presentCost,
     desc: presentDesc,
+    checked: false,
     id: uuidv4()
   }
   // let igenom eran databas efter ert id
@@ -79,8 +103,18 @@ export function addPresent (presentName, presentCost, presentDesc, personid) {
     return person
   })
   tempStorage.people = updatedPeopleList
-  console.log(tempStorage)
   saveStorage(tempStorage)
+}
+
+export function getTotalCost (cost) {
+  var total = 0
+  const tempStorage = loadStorage()
+  tempStorage.people.map(person => {
+    for (var i = 0; i < person.presents.length; i++) {
+      total += parseInt(person.presents[i].cost)
+    }
+  })
+  return total
 }
 
 export function removePresent (id) {

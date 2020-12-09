@@ -1,22 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import Popup from 'react-animated-popup'
 import Button from './Button'
 import stringIsNumeric from 'string-is-numeric'
 import Spacer from './Spacer'
 
-function InputPopup ({ fieldString, children, visible, onClose, onDone, numerical = false }) {
-  console.log(fieldString)
-  const [string, setString] = useState(fieldString)
-
+function InputPopup ({ initialState = '', children, visible, onClose, onDone, numerical = false }) {
+  const [string, setString] = useState(initialState)
   const handleInputChange = (e) => {
     if (numerical) { // vill de ha numeriskt?
       if (stringIsNumeric(e.target.value)) { // är det numeriskt?
         setString(e.target.value)
-      }
+      } else { setString(string) }
     } else {
       setString(e.target.value)
     }
   }
+
+  useMemo(() => {
+    setString(initialState)
+  }, [initialState])
 
   const handleDone = () => {
     onDone(string)

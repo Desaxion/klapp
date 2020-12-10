@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/klapp/static/css/main.56018af2.chunk.css",
+    "main.js": "/klapp/static/js/main.c135a098.chunk.js",
+    "main.js.map": "/klapp/static/js/main.c135a098.chunk.js.map",
+    "runtime-main.js": "/klapp/static/js/runtime-main.815e4e38.js",
+    "runtime-main.js.map": "/klapp/static/js/runtime-main.815e4e38.js.map",
+    "static/js/2.a386dcc4.chunk.js": "/klapp/static/js/2.a386dcc4.chunk.js",
+    "static/js/2.a386dcc4.chunk.js.map": "/klapp/static/js/2.a386dcc4.chunk.js.map",
+    "index.html": "/klapp/index.html",
+    "precache-manifest.09e011057a021d7cfa6916cb2e940f1d.js": "/klapp/precache-manifest.09e011057a021d7cfa6916cb2e940f1d.js",
+    "service-worker.js": "/klapp/service-worker.js",
+    "static/css/main.56018af2.chunk.css.map": "/klapp/static/css/main.56018af2.chunk.css.map",
+    "static/js/2.a386dcc4.chunk.js.LICENSE.txt": "/klapp/static/js/2.a386dcc4.chunk.js.LICENSE.txt",
+    "static/media/Budget.svg": "/klapp/static/media/Budget.e5f6f161.svg",
+    "static/media/App.css": "/klapp/static/media/Roboto-Regular.5673da52.ttf",
+    "static/media/add (1).svg": "/klapp/static/media/add (1).27e0ad19.svg",
+    "static/media/arrow.svg": "/klapp/static/media/arrow.8932d390.svg",
+    "static/media/check.svg": "/klapp/static/media/check.eeeecba8.svg",
+    "static/media/christmas-sack.svg": "/klapp/static/media/christmas-sack.5081e600.svg",
+    "static/media/delete.svg": "/klapp/static/media/delete.57657217.svg",
+    "static/media/edit (1).svg": "/klapp/static/media/edit (1).67249569.svg",
+    "static/media/listwhite.svg": "/klapp/static/media/listwhite.5bf174d8.svg",
+    "static/media/man-user (1).svg": "/klapp/static/media/man-user (1).371be4d5.svg",
+    "static/media/nocheck.svg": "/klapp/static/media/nocheck.bcdf7d71.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.815e4e38.js",
+    "static/js/2.a386dcc4.chunk.js",
+    "static/css/main.56018af2.chunk.css",
+    "static/js/main.c135a098.chunk.js"
+  ]
+}

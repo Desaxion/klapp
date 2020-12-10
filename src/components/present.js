@@ -7,26 +7,60 @@ import styled from 'styled-components'
 const OpaDiv = styled.div`
 opacity : ${props => props.check ? '0.5' : '1'};
 background-color: #dbdbdb;
+border-radius: 25px;
+border-style: ridge;
+border-radius: 25px;
+margin:4px;
 `
-const EntryDiv = styled.div`
+const RowDiv = styled.div`
 display: flex;
 flex-direction: row;
+`
+const StyledImg = styled.img`
+margin:10px;
+
+`
+
+const EntryDiv = styled.div`
+display: flex;
+flex-direction: column;
 align-items:center;
+justify-content: center;
+margin:3px;
+`
+const BodyDiv = styled.div`
+display:flex:
+flex-direction: column;
+padding: 10px;
+`
+const TextDiv = styled.div`
+display: flex;
+align-items: center;
+`
+const StyledH = styled.h4`
+margin-right:4px;
 `
 
 function Present ({ present, onDelete, onEdit, onCheck }) {
-  console.log(present)
   return (
     <div className='PresentEntryWrap'>
       <OpaDiv className='PresentEntry' check={present.checked}>
         <EntryDiv>
+
           <h3>{present.name}</h3>
-          <h4>Pris: </h4><p>{present.cost}</p>
-          <img src={EditIcon} className='EditPerson' alt='edit' onClick={() => onEdit(present)} />
-          <img src={DeleteIcon} className='PersonDelete' alt='delete' onClick={() => onDelete(present)} />
-          <CheckBox value={present.checked} onClick={onCheck} />
+          <BodyDiv>
+            <RowDiv>
+              <TextDiv>
+                <StyledH>Pris:</StyledH><p>{present.cost}</p>
+              </TextDiv>
+              <StyledImg src={EditIcon} className='EditPerson' alt='edit' onClick={() => onEdit(present)} />
+              <StyledImg src={DeleteIcon} className='PersonDelete' alt='delete' onClick={() => onDelete(present)} />
+              <CheckBox value={present.checked} onClick={onCheck} />
+            </RowDiv>
+            <p>Beskrivning:</p>{present.desc}
+          </BodyDiv>
         </EntryDiv>
-        <h4>Beskrivning:</h4>{present.desc}
+
       </OpaDiv>
 
     </div>

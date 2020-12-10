@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import DeleteIcon from '../images/delete.svg'
 import EditIcon from '../images/edit (1).svg'
 import CheckBox from './CheckBox'

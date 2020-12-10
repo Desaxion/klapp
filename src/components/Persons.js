@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { getPeople, addPerson, flushDB, removePerson, getTotalCost } from '../lib/db'
+import { getPeople, addPerson, removePerson, getTotalCost } from '../lib/db'
 import addImage from '../images/add (1).svg'
-import DeleteIcon from '../images/delete.svg'
 import Person from '../components/Person'
 import InputPopup from '../components/InputPopup'
 import YesNoPopup from './YesNoPopup'
@@ -49,11 +48,11 @@ function Persons ({ onCostChange }) {
     setPeople([...getPeople()])
   }
 
-  const deleteAll = () => {
+  /* const deleteAll = () => {
     flushDB()
     // det är att react tror att det är samma object för att den har gamla addressen så vi måste skapa en ny kopia
     setPeople([...getPeople()]) // Vad betyder ...? Shallow copy
-  }
+  } */
 
   return (
     <div>
